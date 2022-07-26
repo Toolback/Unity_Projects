@@ -1,0 +1,60 @@
+﻿GAME CONCEPT :
+Game Prerequist ->
+ - Mechanism to store and retrieve questions
+ - Buttons to select an answers
+ - Timer to put some pressure on the player 
+ - Porgress bar to show how many questions remain
+ - Scoring to show the player how well they did
+ - A way to restart the game when the quiz ends
+
+ Game Design -> 
+ Player experience : Flee Knowledgeable / intelligent (Lot a Felicitation message on success for exemple)
+
+ Core Mecanic -> 
+ Test you Knowledge
+
+ Game Loop -> 
+ Answer a set number questions on a topic within the given time 
+TODO LIST : 
+
+VIEW IN THIS PROJECT :
+
+- (Create) Canvas (Write a correct description) Multiple Plan ? Scene Camera ? 
+
+- Pivot And Center Point on canvas / Game Object
+
+- (Package/Extension) Textmesh Pro : Allow Better Text Handling 
+
+- (Component) Vertical Group Layout : Dispose Ordered Child (Set up size / structure etc do not set up manualy)
+
+- (script) Scriptable Object : Data container out of script (save memory in a single place in which others scripts can refer)
+								They don't need to be attached to a GO like others normalBehavior scripts (lightweight)
+								Act as a kind of template / blueprint - consistency
+								(ex store weapons stats / Card Data / Question Data(text/answer/ref to correct answer))
+
+- [CreateAssetMenu()] Allow to add new object to create in the UI of Unity
+
+- [TextArea(2, 6)]Adjut and controle size of text box in the inspector (min n max line /size)
+
+- (Methods) Getter Methods : 
+							- Give a script a read only access to a private variable
+							- Protects the contents of a private variable (only setter may change or other inside methods)
+							- the specified returned (usualy void = nothing) turn to string or specified typing
+							- then return the specific var (return question;) in a copy 
+
+- (script) Timer Fill fraction :
+
+	- List (Similar to Array) group multiple variable of the same type
+	- each item stored in a list is called an "Element"
+	- Accessed by index
+	- 0 indexed
+	- Diff // with array : List are mutable, you can change their size 
+
+	List<int> oddNuùbers = new List<int>;
+
+	List.count = array.length
+	List.Contains(int) 
+	List.Add(int)
+	List.Remove(int)
+	List.RemoveAt(index)
+	List.Clear()

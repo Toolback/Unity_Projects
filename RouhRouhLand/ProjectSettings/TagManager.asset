@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Ground
+  - Ladder
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Ground
+  - Ladder
+  - Player
+  - Background
+  - Bouncing
+  - Ennemies
+  - Hazards
+  - Bullets
+  - Interactables
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1821276115
+    locked: 0
+  - name: WaterBG
+    uniqueID: 1702454141
+    locked: 0
+  - name: Plateforms
+    uniqueID: 2437928779
+    locked: 0
+  - name: Ladder
+    uniqueID: 2051759581
+    locked: 0
+  - name: Hazards
+    uniqueID: 2528996157
+    locked: 0
+  - name: Interactables
+    uniqueID: 855537725
+    locked: 0
+  - name: Ennemies
+    uniqueID: 3071240667
+    locked: 0
+  - name: Player
+    uniqueID: 3976201215
+    locked: 0

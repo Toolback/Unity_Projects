@@ -1,0 +1,55 @@
+﻿GAME CONCEPT : 
+Game Prerequist :
+Game Design : 
+Game Core Mecanics : 
+Game Loop : 
+
+TODO LIST :
+
+VIEW IN THIS PROJECT : 
+- (Create gameObject) Sprite Shape Closed : for 2D plateformer
+	- fill material = center sprite (BG) 
+	- Edge Material = border sprite (Ground)
+	
+	-> Top and down mayb be set with the selected Profile (Idealy create personal one)
+
+- (Component) Edge / Surface Collider 2D: 
+	-> Allow to create collider with adaptive shape (can be set with the "offset" field) 
+
+- (Design Tech) Delimitation of assets border (for repeating painting for exemple)
+	=> Clic Asset File -> Sprite Editor -> Move Green Lines for new limitation
+	=> Wrap mode : Repeat (set from delimited border)
+
+- (Extension) Cinemachine : Allow Multiple Camera Handle + Easy follow one mono target 
+	-> Cool Feature Trigger zoom for run / dezoom for walk dedezoom(normal size) when stopped 
+	-> Cinematic Triggered Camera / Scene / Zoom on NPC or point of interest
+
+- (GameObject) Caracter : One Gameobject with a rigidBody who regroup differents 
+						  gameobject (body parts), Parent GO(GameObject) Contain 
+						  a Definied Center in with other Child Compenents may gravit (
+						  Carefull with Transform position(better reset child to parent) try to
+						  center child with parent)						  
+
+- (Component) Surface Effector : Allow Physic Force in Triggered Contact with other collider 
+
+- (Component RigidBody) Collision Detection : Continuous more expensive but more accuracte (avoir passing over ground)					
+
+- (Script) Rigidbody2D.AddTorque(Xf): allow to exherce force to the GO (avoid directict rotate on object)
+										to be handle with RigidBody Settings aswell
+										: Linear Drag - how much friction when moving backward / forward
+											+ In addition to surface effector  : speed : X;
+										: Angular Drag - how much friction when spin around
+
+- (NameSpace) using UnityEngine.SceneManagement : special unity namespace allowing specials methods like LoadScene (go to index scene)
+
+- (File - Build Setting) Scene Manager Allowing Indexing for unity engin and methods like 
+							SceneManager.LoadScene(0); 0 = First index of build setting scenes 
+
+- (Method) Using Invoke("methodName", delay); -> pass in a method name to call it after a specified delay
+
+- (Method) (old?) Input.GetKey(KeyCode.LeftArrow) Retrieve User Input
+
+-(Component) Audio Source - Can Access multiple AudioClip by letting the component field empty	
+							and set which SFX to play by script (onTrigger GetComponent<AudioSource>().PlayOneShot(crashSFX))
+
+							- (Methodes) Acces Public Methods : FindObjectOfType<PlayerControls>().DisableControls();

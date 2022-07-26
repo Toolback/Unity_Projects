@@ -1,0 +1,4 @@
+﻿TODO LIST : 
+- [] Divide Collision Trigger & Collider Scripts to respective GameObjects  
+- [] set correct waiter method
+- [] Fix Kill Passenger when not onboarded 

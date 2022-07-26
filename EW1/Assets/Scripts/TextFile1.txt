@@ -1,0 +1,73 @@
+﻿# REMINDER : 
+
+	 ALL : 
+		- Additive Scene : Right click on a saved Scene -> "Open Additive Scene" and click to "Set Active Scene" on Hierarchy 
+
+		- Singleton Monobehavior : 
+			Pattern of class allowing extensions of his methods by inheritence. In this particular case, share the Awake Monobehavior methods to ensure that 
+			only one game object of the inherited class is instanciated (the older one, newest one get deleted)
+
+		- static : allow the class to be accessed without being instanciated 
+
+		- constructor : run when the class is created (for static) or instanciated 
+
+		- Movement Event Handler : Define Parameters Triggers by the Publisher (player) which pass them if theres any Subscribers (event / Delegate)
+
+
+	COMPONENT : 
+		- Sprite Renderer : Render Selected Sprite 
+			- Sprite Sort Point -> On Pivot Selected, Center the Sprite on his Pivot Point (Bottom Middle Green Point on Sprite Editor) 
+			ex on caracter, allow passing forward on feet crossing
+
+		- Sorting Group : Group all GameObject's Children to ensure that it form a single identity 
+
+		-TileMap Collider 2D : Group All Tile Map Single Grind to one big collider (stil divided by single tile grid)
+		- Composite Collider 2D : Can group a TileMap Collider to a Single Collider not divided anymore (geometry type to polygon ?) Active Used By Composite in TileMap Collider 
+	
+# GAME TECH PAPER : 
+	- PersistentScene : Stay Loaded the whole time, contain majority of game logic and different game managers (states ?)
+						Differents Scenary Scenes (tilemaps) are displayed in "Active" Additive Scene
+	- EventHandler.cs : Act as a Tampon Between Publisher and Subscribed scripts
+
+	- Player.cs : capture and dispatch to EventHandler Player's Input to animate (update Method) and move the caracter's body (FixedUpdate Method)
+				- Has a ref to the Main Camera to fetch and pass the current player position to others class (for exemple UIInventoryBar.cs for displaying top or right the inventory UI)
+
+	- MovementAnimationParameterControl.cs : Act32 tile  as a Subscriber to MovementEvent from EventHandler.cs and set active defined Animation on attached GameObject
+
+	- TileMap Grid : Dispose differents layers of tilemaps to create a sense of depth and interact with restricted area in scripts (GridProperties GO Children)
+		Each (ex GroundTileSet n405) tile grid should have a collider type of "None"
+
+	- SwitchConfineBoundingShape : Retrieve Current Scene's Bounds Confiner (by his tag "BoundsConfiner"), and set the PersistentScene Camera Player Follow to current polygon bouding shape
+	
+	- ObscuringItemFader : Listener that fade in / out his parent GO on Trigger 
+
+	-TriggerObscuringItemFader : Trigger Scripts attached to the player to activate the fade in / out of scenary item when passing by (collider trigger)
+
+	- ItemDetail : Determine what carac / spec to attribute to an item 
+	
+	-SO_ItemList : Allow the creation of scriptable GO list with ItemDetail.cs config
+
+	- Item : Scripts attached to an item Object to ensure that the correct ItemCode is given / register 
+
+	- InventoryManger : SingletonMonobehaviour (Single instance which store accessibles states / methods) that store items from(so_ItemList) and inventory dictionnary / manager, 
+						Library that is query for items requests / handle 
+						- Initialize different Inventory list (defined in Enum.cs) in an array (0 = Player, 1 = chest) set their max capacity (from settings.cs) and instanciate saved datas from previous game
+						- AddItem() allow to add an item to an inventoryLocation (0 = Player, etc)
+						
+	- ItemPickUp : Scripts attached to the player, detect trigger collider encounter and retrieve Item Type, if this is an item AND can be picked up, then pick it up (add it to Player's InventoryManager)
+					- if the item can be picked up, add it to the inventory with the inventory Manager
+	- ItemCodeDescriptionDrawer : Custom Scripts that draw a custom property on the unity UI -> Add the Item description below the Item Code 
+								(scripts attached to Item.cs gameobject)
+
+	-ItemNudge : Script attached to item GO (if reapable type) by the Item.cs script (Init() method) to make them woble on trigger collider with player depending on its position on the X axis
+
+	-InventoryItem : struct giving all items pecked up in inventory (store itemCode & Quantity per item)
+					- Slots available describe in Settings.cs
+					- Enum.cs contain all inventory in the game (player, chest, etc)
+	
+	- UIInventoryBar : Fetch Current player viewport position and adapt the UI Inventory Bar display if the player goes down or up on the camera (cinemachine confiner)
+						- store all UIInventorySlot to handle them
+						- Subscribe to Players's PickupItem Event from EventHandler.cs to update in realTime the UI BarInventory displayed
+						- 
+
+	- UIInventorySlot : Attach public getters to the each UI Bar Inventory Slot (highlight image, item image, quantity text) and item details

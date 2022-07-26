@@ -1,0 +1,10 @@
+﻿CONCEPTS VIEW IN THIS PROJECT :
+- Tile Rule : Allow special rule for tile creation : what tile goes witch others 
+
+- animation : set of different sprite handle by an animation controler 
+
+- (component) TileMap Collider 2D : Create a collider around all selected tilemap on the component
+- component Composite Collider 2D : static on a ground, allow to group and smooth a tilemap collider 
+- (tips) Freeze X rotation to rigib body prevent capsule to roll
+-(extensions) Cinemachine : StateDriven Camera by animation, allow the trigger of different camera settings by state
+-(materials2D) friction to 0 to prevent wall grip / Bounce to 1.5 to auto jump 
